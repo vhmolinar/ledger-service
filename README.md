@@ -7,18 +7,14 @@ Double-entry ledgering is a fundamental accounting principle where every financi
 
 This ledger service is built as a containerized REST API using modern Node.js technologies. The stack consists of:
 
-**Backend Framework:** Fastify (v4.28.1) - A fast and low overhead web framework for Node.js, providing high-performance HTTP server capabilities.
 
-**Language & Runtime:** TypeScript (v5.4.5) with Node.js - Offering type safety and modern JavaScript features for robust development.
-
-**Database:** PostgreSQL 17 with Knex.js (v3.1.0) - A reliable relational database with a flexible query builder for database operations and migrations.
-
-**Testing:** Jest (v30.1.3) with Supertest - Comprehensive testing framework with API testing capabilities, including Testcontainers (v11.5.1) for integration testing with real database instances.
+**Language & Runtime:** TypeScript (v5.4.5) with Node.js
+**Backend Framework:** Fastify (v4.28.1)
+**Database:** PostgreSQL 17 with Knex.js (v3.1.0)
+**Testing:** Jest (v30.1.3) with Supertest
 
 **Development Tools:**
-- ESLint with TypeScript support for code quality
-- ts-node-dev for hot-reloading during development
-- Docker Compose for orchestrating multi-container deployment
+- Docker and Docker compose
 
 
 ## Running
