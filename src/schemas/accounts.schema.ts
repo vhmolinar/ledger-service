@@ -1,5 +1,5 @@
 import { JSONSchemaType } from "ajv";
-import { Direction, DirectionValues } from "../domain/direction"
+import { Direction, DirectionValues } from "../domain/direction";
 
 export interface CreateAccountBody {
     id?: string;

@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { CreateTransactionBody, TransactionResource } from "../schemas/transactions.schema";
+import { CreateTransactionBody, TransactionResource } from "@/schemas/transactions.schema";
 
 export async function create(
     request: FastifyRequest<{ Body: CreateTransactionBody }>,

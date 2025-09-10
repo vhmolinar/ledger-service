@@ -1,29 +1,51 @@
-import knexLib, { Knex } from "knex";
+import knexLib from "knex";
+import type { Knex } from "knex";
+
 import dotenv from "dotenv";
 
-dotenv.config({ path: "../../.env" });
+const dotEnvPath = process.env.NODE_ENV == "test" ?
+    "" : "../../";
 
-const config: { [key: string]: Knex.Config } = {
-    development: {
-        client: "pg",
-        connection: {
-            host: process.env.POSTGRES_HOST || "localhost",
-            port: Number(process.env.POSTGRES_PORT) || 5432,
-            user: process.env.POSTGRES_USER,
-            password: process.env.POSTGRES_PASSWORD,
-            database: process.env.POSTGRES_NAME || "ledger-service",
+dotenv.config({ path: `${dotEnvPath}.env` });
+
+const dbName = process.env.NODE_ENV == "test" ?
+    process.env.POSTGRES_TEST_DB :
+    process.env.POSTGRES_NAME;
+
+const getConfig = (): { [key: string]: Knex.Config } => {
+    const defaultConfig = {
+        development: {
+            client: "pg",
+            connection: {
+                host: process.env.POSTGRES_HOST || "localhost",
+                port: Number(process.env.POSTGRES_PORT) || 5432,
+                user: process.env.POSTGRES_USER,
+                password: process.env.POSTGRES_PASSWORD,
+                database: dbName
+            },
+            migrations: {
+                directory: "../../database/migrations",
+                tableName: "migrations"
+            },
+            pool: { min: 2, max: 10 },
+            debug: true,
         },
-        migrations: {
-            directory: "../../database/migrations",
-            tableName: "migrations",
-        },
-        pool: { min: 2, max: 10 },
-        debug: true,
-    },
+    };
+    return {
+        ...defaultConfig,
+        test: {
+            ...defaultConfig.development,
+            pool: { min: 1, max: 5 },
+        }
+    };
 };
+
+const config = getConfig();
 
 export default config;
 
-const knexConfig: Knex.Config = (config as any)[process.env.NODE_ENV || "development"];
-
-export const knex = knexLib(knexConfig);
+export const knexSession = (): Knex<any, any> => {
+    const lazyConfig = getConfig();
+    const knexConfig = lazyConfig[process.env.NODE_ENV || "development"]
+    return knexLib(knexConfig);
+}
