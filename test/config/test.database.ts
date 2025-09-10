@@ -11,6 +11,12 @@ export class TestDatabase {
 
     async startTransaction(): Promise<void> {
         this.trx = await this.knex.transaction();
+
+        // @ts-expect-error we don't want the transactions to be commited in tests
+        this.trx.commit = async () => {
+            return Promise.resolve();
+        };
+
     }
 
     activeTransaction(): Knex.Transaction {

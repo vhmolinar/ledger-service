@@ -12,6 +12,7 @@ export class TestApp {
     async init(db: TestDatabase): Promise<FastifyInstance> {
         await this.app.register(routes);
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         this.app.addHook("onRequest", async (request, reply) => {
             request.tx = db.activeTransaction();
         });

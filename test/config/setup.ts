@@ -1,11 +1,15 @@
-import { TestDatabase } from "./test.database"
+import { TestDatabase } from "./test.database";
 import { TestApp } from "./test.app";
 import teardown from "./teardown";
+import dotenv from "dotenv";
+import {FastifyInstance} from "fastify";
+
+dotenv.config();
 
 declare global {
     var testDb: TestDatabase;
     var testApp: TestApp;
-    var testServer: any;
+    var testServer: FastifyInstance;
 }
 
 beforeAll(async () => {

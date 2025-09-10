@@ -3,10 +3,7 @@ import type { Knex } from "knex";
 
 import dotenv from "dotenv";
 
-const dotEnvPath = process.env.NODE_ENV == "test" ?
-    "" : "../../";
-
-dotenv.config({ path: `${dotEnvPath}.env` });
+dotenv.config({ path: "../../.env" });
 
 const dbName = process.env.NODE_ENV == "test" ?
     process.env.POSTGRES_TEST_DB :
@@ -44,8 +41,9 @@ const config = getConfig();
 
 export default config;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const knexSession = (): Knex<any, any> => {
     const lazyConfig = getConfig();
-    const knexConfig = lazyConfig[process.env.NODE_ENV || "development"]
+    const knexConfig = lazyConfig[process.env.NODE_ENV || "development"];
     return knexLib(knexConfig);
-}
+};

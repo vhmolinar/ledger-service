@@ -6,6 +6,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string("name").notNullable();
         table.enu("direction", ["debit", "credit"]).notNullable();
         table.bigInteger("balance").notNullable().defaultTo(0);
+        table.timestamps(true, true);
     });
 }
 
