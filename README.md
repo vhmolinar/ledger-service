@@ -8,10 +8,10 @@ Double-entry ledgering is a fundamental accounting principle where every financi
 This ledger service is built as a containerized REST API using modern Node.js technologies. The stack consists of:
 
 
-**Language & Runtime:** TypeScript (v5.4.5) with Node.js
-**Backend Framework:** Fastify (v4.28.1)
-**Database:** PostgreSQL 17 with Knex.js (v3.1.0)
-**Testing:** Jest (v30.1.3) with Supertest
+**Language & Runtime:** TypeScript (v5.4.5) with Node.js  
+**Backend Framework:** Fastify (v4.28.1)  
+**Database:** PostgreSQL 17 with Knex.js (v3.1.0)  
+**Testing:** Jest (v30.1.3) with Supertest  
 
 **Development Tools:**
 - Docker and Docker compose
