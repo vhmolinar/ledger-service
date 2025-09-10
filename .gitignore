@@ -1,0 +1,4 @@
+database/data
+.idea
+node_modules
+.env
