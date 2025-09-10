@@ -1,19 +1,9 @@
 # Ledger Service
 
-Double-entry ledgering is a fundamental accounting principle where every financial transaction is recorded in at least two accounts, ensuring that debits always equal credits. This system maintains the accounting equation: **Assets = Liabilities + Equity**.
+Double-entry ledgering is a fundamental accounting principle where every financial transaction is recorded in at least two accounts, ensuring that debits always equal credits.
 
-### Key Principles
-- **Dual Impact**: Every transaction affects at least two accounts
-- **Balance Requirement**: Total debits must equal total credits
-- **Error Detection**: Imbalanced entries indicate mistakes
-- **Complete Picture**: Shows both sources and uses of funds
 
-### Example Transaction
-When a company receives $1,000 cash from a customer:
-- **Debit**: Cash Account (+$1,000) - Asset increases
-- **Credit**: Revenue Account (+$1,000) - Income increases
-
-## Proof of concept
+## Stack
 
 This ledger service is built as a containerized REST API using modern Node.js technologies. The stack consists of:
 
